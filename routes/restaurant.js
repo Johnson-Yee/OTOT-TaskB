@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
 //Geting One
 router.get("/:id", getRestaurant, (req, res) => {
-    res.send(res.restaurant.name);
+    res.send(res.restaurant);
 });
 
 //Creating one
