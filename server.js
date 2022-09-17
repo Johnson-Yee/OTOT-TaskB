@@ -1,10 +1,13 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const app = express();
 const port = 3000;
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+mongoose.connect(
+    "mongodb+srv://johnsonyee:johnsonyee@cluster0.rzsxbti.mongodb.net/restaurants",
+    { useNewUrlParser: true }
+);
 
 const db = mongoose.connection;
 db.on("error", (error) => console.log(error));
