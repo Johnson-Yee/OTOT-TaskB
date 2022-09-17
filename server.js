@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const { default: mongoose } = require("mongoose");
 const app = express();
-
+const port = 3000;
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
 const db = mongoose.connection;
@@ -15,4 +15,4 @@ app.use(express.json());
 const restaurantRouter = require("./routes/restaurant");
 app.use("/restaurants", restaurantRouter);
 
-app.listen(3000, () => console.log("Server Started"));
+app.listen(process.env.PORT || port, () => console.log(`Server Started on port :${port}`));
