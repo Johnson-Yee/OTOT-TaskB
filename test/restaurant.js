@@ -3,7 +3,7 @@ let chai = require("chai");
 let server = require("../server");
 let chaiHttp = require("chai-http");
 const Restaurant = require("../models/restaurant");
-
+let createdId = null;
 chai.should();
 chai.use(chaiHttp);
 
@@ -57,7 +57,7 @@ describe("Test POST Creation of Restaurant", () => {
                 ratings: 5,
             })
             .end((err, res) => {
-                console.log(res);
+                createdId = res.body._id;
                 res.should.have.status(201);
                 res.body.name.should.equal("Mcdonalds Tampines Outlet");
                 res.body.address.should.equal("Tampines Mall");
@@ -75,31 +75,75 @@ describe("Test POST Creation of Restaurant", () => {
                 ratings: 5,
             })
             .end((err, res) => {
-                console.log(res);
-                res.should.have.status(201);
-                res.body.name.should.equal("Mcdonalds Tampines Outlet");
-                res.body.address.should.equal("Tampines Mall");
-                res.body.ratings.should.equal(5);
+                res.should.have.status(400);
+                res.body.message.should.equal(
+                    "Restaurant validation failed: address: Path `address` is required."
+                );
+                done();
+            });
+    });
+});
+
+// Test the Put Route
+describe("Test Put Update Edit of Restaurant", () => {
+    it("Edit Restaurant", (done) => {
+        chai.request(server)
+            .put("/restaurants/" + createdId)
+            .set("content-type", "application/json")
+            .send({
+                name: "Long John Silvers(Edited)",
+                address: "Macpherson Blk 12 St 13 (Edited)",
+            })
+            .end((err, res) => {
+                createdId = res.body._id;
+                res.should.have.status(200);
+                res.body.name.should.equal("Long John Silvers(Edited)");
+                res.body.address.should.equal(
+                    "Macpherson Blk 12 St 13 (Edited)"
+                );
+                done();
+            });
+    });
+    const invalidId = "INVALID_ID";
+    it("Failure to update restaurant", (done) => {
+        chai.request(server)
+            .put("/restaurants/" + invalidId)
+            .set("content-type", "application/json")
+            .send({
+                name: "Long John Silvers",
+                address: "Macpherson Blk 12 St 13",
+            })
+            .end((err, res) => {
+                res.should.have.status(404);
+                res.body.message.should.equal("Invalid ID is provided");
+                done();
+            });
+    });
+});
+
+// Test the Delete Route
+describe("Test Delete of Restaurant", () => {
+
+    const invalidId = "INVALID_ID";
+    it("Failure to delete restaurant", (done) => {
+        chai.request(server)
+            .delete("/restaurants/" + invalidId)
+            .set("content-type", "application/json")
+            .end((err, res) => {
+                res.should.have.status(404);
+                res.body.message.should.equal("Invalid ID is provided");
                 done();
             });
     });
 
-    // it("INVALID - It should not add a new contact when specified schema is wrong", (done) => {
-    //     chai.request(app)
-    //         .post("/api/contacts")
-    //         .type("form")
-    //         .send({
-    //             name: "Tester123",
-    //             phone: 987654321,
-    //             gender: "Male",
-    //         })
-    //         .end((err, res) => {
-    //             res.should.have.status(400);
-    //             res.body.name.should.equal("ValidationError");
-    //             done();
-    //         });
-    // });
+    it("Delete Restaurant", (done) => {
+        chai.request(server)
+            .delete("/restaurants/" + createdId)
+            .end((err, res) => {
+                createdId = res.body._id;
+                res.should.have.status(200);
+                res.body.message.should.equal("Deleted Restaurant");
+                done();
+            });
+    });
 });
-
-// Test the Put Route
-// Test the Delete Route
