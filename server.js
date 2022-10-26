@@ -17,3 +17,5 @@ const restaurantRouter = require("./routes/restaurant");
 app.use("/restaurants", restaurantRouter);
 
 app.listen(process.env.PORT || port, () => console.log(`Server Started on port :${port}`));
+
+module.exports = app;
