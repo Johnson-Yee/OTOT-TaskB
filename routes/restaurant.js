@@ -63,8 +63,10 @@ router.put("/:id", getRestaurant, async (req, res) => {
 //Deleting One
 router.delete("/:id", getRestaurant, async (req, res) => {
     try {
-        await res.restaurant.remove();
-        res.json({ message: "Deleted Restaurant" });
+        if(res.restaurant!==null){
+            await res.restaurant.remove();
+            res.json({ message: "Deleted Restaurant" });
+        }
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
