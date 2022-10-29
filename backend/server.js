@@ -14,9 +14,9 @@ db.once("open", () => console.log("Connected to Database"));
 app.use(express.json());
 
 const restaurantRouter = require("./routes/restaurant");
-app.use("/restaurants", restaurantRouter);
 app.use(cors()); // config cors so that front-end can use
 app.options("*", cors());
+app.use("/restaurants", restaurantRouter);
 app.listen(process.env.PORT || port, () => console.log(`Server Started on port :${port}`));
 
 module.exports = app;
