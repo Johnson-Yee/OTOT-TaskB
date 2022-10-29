@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const app = express();
 const port = 3000;
@@ -10,8 +11,12 @@ mongoose.connect(
 const db = mongoose.connection;
 db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("Connected to Database"));
-
-app.use(express.json());
+const corsSettings = {
+    origin: "*",
+    credentials: true,
+    optionSuccessStatus: 200,
+};
+app.use(cors(corsSettings)); 
 
 const restaurantRouter = require("./routes/restaurant");
 app.use("/restaurants", restaurantRouter);
