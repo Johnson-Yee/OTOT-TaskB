@@ -11,16 +11,12 @@ mongoose.connect(
 const db = mongoose.connection;
 db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("Connected to Database"));
-const corsSettings = {
-    origin: "*",
-    credentials: true,
-    optionSuccessStatus: 200,
-};
-app.use(cors(corsSettings)); 
+app.use(express.json());
 
 const restaurantRouter = require("./routes/restaurant");
 app.use("/restaurants", restaurantRouter);
-
+app.use(cors()); // config cors so that front-end can use
+app.options("*", cors());
 app.listen(process.env.PORT || port, () => console.log(`Server Started on port :${port}`));
 
 module.exports = app;
