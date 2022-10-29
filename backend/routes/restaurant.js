@@ -3,7 +3,7 @@ const router = express.Router();
 const Restaurant = require("../models/restaurant");
 var ObjectId = require("mongoose");
 
-//Getting all
+//Getting all 
 router.get("/", async (req, res) => {
     try {
         const restaurant = await Restaurant.find();
