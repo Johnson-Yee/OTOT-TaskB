@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "http://{{heroku}}/restaurants",
+			"name": "Heroku Valid Get All Restaurants",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -26,37 +26,102 @@
 			"response": []
 		},
 		{
-			"name": "http://{{heroku}}/restaurants",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "Local Valid GET All Restaurants",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n \"name\":\"Mcdonald's\",\r\n \"address\": \"Street 12 Blk 291 Tampines\",\r\n \"ratings\": 5\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://{{local}}/restaurants",
+					"raw": "http://{{heroku}}/restaurants/63258eb008507967dfd060b",
 					"protocol": "http",
 					"host": [
-						"{{local}}"
+						"{{heroku}}"
 					],
 					"path": [
-						"restaurants"
+						"restaurants",
+						"63258eb008507967dfd060b"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "http://{{heroku}}",
+			"name": "Heroku Valid Get Specific Restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258eb008507967dfd060b",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258eb008507967dfd060b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Heroku Invalid Get Specific Restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258eb008507967dfd060b",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258eb008507967dfd060b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Valid Get Specific Restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258eb008507967dfd060b",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258eb008507967dfd060b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Invalid Get Specific Restaurant",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258eb008507967dfd060b",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258eb008507967dfd060b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Heroku Valid Post Create Restaurant",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -83,7 +148,88 @@
 			"response": []
 		},
 		{
-			"name": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+			"name": "Heroku Invalid Post Create Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"Mcdonalds\",\r\n \"ratings\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Valid Post Create Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"ABC Restaurant (Local)\",\r\n \"address\": \"XYZ Street (Local)\",\r\n \"ratings\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localURL}}/restaurants",
+					"protocol": "http",
+					"host": [
+						"{{localURL}}"
+					],
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Invalid Post Create Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"ABC Restaurant (Local)\",\r\n \"address\": \"XYZ Street (Local)\",\r\n \"ratings\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{localURL}}/restaurants",
+					"protocol": "http",
+					"host": [
+						"{{localURL}}"
+					],
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Heroku Valid Put Edit Specific Restaurant",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -111,7 +257,175 @@
 			"response": []
 		},
 		{
-			"name": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+			"name": "Heroku Invalid Put Edit Specific Restaurant",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258e7d08507967dfd060b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Valid Put Edit Specific Restaurant",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258e7d08507967dfd060b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Invalid Put Edit Specific Restaurant",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258e7d08507967dfd060b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Heroku Valid Del Delete Restaurant by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/6325ae51266f9680f4e77630",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"6325ae51266f9680f4e77630"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Heroku Invalid Del Delete Restaurant by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/6325ae51266f9680f4e77630",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"6325ae51266f9680f4e77630"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Valid Del Delete Restaurant by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/6325ae51266f9680f4e77630",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"6325ae51266f9680f4e77630"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local Invalid Del Delete Restaurant by ID",
 			"request": {
 				"method": "DELETE",
 				"header": [],

@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const app = express();
-const port = 3000;
+const port = 3001;
 mongoose.connect(
     "mongodb+srv://johnsonyee:johnsonyee@cluster0.rzsxbti.mongodb.net/restaurants",
     { useNewUrlParser: true }
