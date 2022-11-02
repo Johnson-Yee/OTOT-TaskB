@@ -76,7 +76,7 @@ async function getRestaurant(req, res, next) {
     let restaurant;
     try {
         if (!ObjectId.isValidObjectId(req.params.id)) {
-            res.status(404).json({ message: "Invalid ID is provided" });
+            return res.status(404).json({ message: "Invalid ID is provided" });
         } else {
             restaurant = await Restaurant.findById(req.params.id);
             if (restaurant == null) {
