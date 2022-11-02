@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "9c0065df-5ffb-457b-9028-fa5ecf0fca9b",
+		"name": "TaskB_RestaurantRatings_Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15117214"
+	},
+	"item": [
+		{
+			"name": "http://{{heroku}}/restaurants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258eb008507967dfd060b",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258eb008507967dfd060b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{heroku}}/restaurants",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\":\"Mcdonald's\",\r\n \"address\": \"Street 12 Blk 291 Tampines\",\r\n \"ratings\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{local}}/restaurants",
+					"protocol": "http",
+					"host": [
+						"{{local}}"
+					],
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{heroku}}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"Mcdonalds\",\r\n \"ratings\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"63258e7d08507967dfd060b8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://{{heroku}}/restaurants/63258e7d08507967dfd060b8",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Dominoes Edited\",\r\n    \"address\": \"Street 999 Blk 291 Bedok\",\r\n    \"ratings\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{heroku}}/restaurants/6325ae51266f9680f4e77630",
+					"protocol": "http",
+					"host": [
+						"{{heroku}}"
+					],
+					"path": [
+						"restaurants",
+						"6325ae51266f9680f4e77630"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "heroku",
+			"value": "aqueous-citadel-21865.herokuapp.com",
+			"type": "string"
+		},
+		{
+			"key": "localURL",
+			"value": "localhost:3000"
+		}
+	]
+}
