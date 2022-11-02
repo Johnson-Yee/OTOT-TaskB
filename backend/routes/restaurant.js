@@ -40,15 +40,15 @@ router.post("/", async (req, res) => {
 
 //Updating One
 router.put("/:id", getRestaurant, async (req, res) => {
-    if (req.body.name != null) {
+    if (req.body.name != null || req.body.name != undefined) {
         res.restaurant.name = req.body.name;
     }
 
-    if (req.body.address != null) {
+    if (req.body.address != null || req.body.address != undefined) {
         res.restaurant.address = req.body.address;
     }
 
-    if (req.body.ratings != null) {
+    if (req.body.ratings != null || req.body.ratings != undefined) {
         res.restaurant.ratings = req.body.ratings;
     }
 
