@@ -1,9 +1,14 @@
 import axios from "axios";
-import { API_LINK } from "../common/constants";
+import { API_LINK, RES_API_LINK } from "../common/constants";
 
 const getAll = async () => {
     const request = axios.get(`${API_LINK}/restaurants/`);
     return request
+};
+
+const getAllAsianCurrencies = async () => {
+    const request = axios.get(RES_API_LINK);
+    return request;
 };
 
 const create = (newObject) => {
@@ -21,6 +26,6 @@ const deleteRes = (id) => {
     return request.then((response) => response.data);
 };
 
-const exports = { getAll, create, deleteRes, update};
+const exports = { getAll, create, deleteRes, update, getAllAsianCurrencies };
 
 export default exports;

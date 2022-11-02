@@ -24,6 +24,7 @@ const Dashboard = () => {
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
     const [ratings, setRatings] = useState("");
+    const [currency, setCurrency] = useState([{ EUR: 1 }]);
     const [id, setId] = useState("");
     const [editMode, setEditMode] = useState(false);
 
@@ -115,7 +116,10 @@ const Dashboard = () => {
     async function getAllRestaurants() {
         try {
             const rawData = await restaurantService.getAll();
-
+            const rawCurrData = await restaurantService.getAllAsianCurrencies();
+            setCurrency(rawCurrData.data);
+            // console.log(rawCurrData);
+            // console.log(typeof(rawCurrData));
             if (rawData.status === 200) {
                 var rawRestaurantList = rawData.data;
                 var restaurants = [];
@@ -264,6 +268,34 @@ const Dashboard = () => {
                                             <FontAwesomeIcon icon={faPencil} />
                                         </Button>
                                     </td>
+                                </tr>
+                            </>
+                        );
+                    })}
+                </tbody>
+            </Table>
+
+            <Table
+                style={{
+                    marginTop: "7rem",
+                }}
+            >
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Currency</th>
+                        <th>Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {currency.map((key, index) => {
+                        var temp = Object.entries(key);
+                        return (
+                            <>
+                                <tr>
+                                    <th scope="row">{index + 1}</th>
+                                    <td>{temp[0][0]}</td>
+                                    <td>{temp[0][1]}</td>
                                 </tr>
                             </>
                         );
